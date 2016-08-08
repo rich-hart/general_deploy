@@ -1,0 +1,3 @@
+---
+- git: repo=https://github.com/Connexions/cnx-archive.git
+       dest=/home/vagrant

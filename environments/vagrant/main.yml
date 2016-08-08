@@ -1,0 +1,10 @@
+---
+- name: create vm
+  hosts: local
+  tasks:
+    - command: vagrant up chdir=environments/vagrant/
+
+- name: deploy
+  hosts: webservers
+  roles:
+    - archive  

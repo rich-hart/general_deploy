@@ -1,0 +1,17 @@
+---
+
+#- name: create deploy keys
+#  hosts: local
+#  tasks:
+#    - authorized_key: user=openstax key="{{ lookup('file', '~/.ssh/cnx_deployment_id_rsa.pub')}}"
+#    - authorized_key: user=www-dat key="{{ lookup('file', '~/.ssh/cnx_deployment_id_rsa.pub')}}"
+
+#- name: setup enviroment
+#  hosts: local
+#  tasks:
+#    - include: environments/vagrant/setup.yml
+
+- name: install archive
+  hosts: vagrant
+  roles:
+    - archive
