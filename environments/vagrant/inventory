@@ -2,6 +2,6 @@
 127.0.0.1 ansible_connection=local
 
 [vagrant]
-local.cnx.org ansible_ssh_host=192.168.24.48 ansible_ssh_port=22
+local.cnx.org ansible_ssh_host=192.168.24.48 ansible_ssh_port=22 ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
 
 
