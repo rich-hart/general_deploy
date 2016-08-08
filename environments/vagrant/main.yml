@@ -1,10 +1,5 @@
 ---
-- name: create vm
-  hosts: local
+- hosts: nodes
   tasks:
-    - command: vagrant up chdir=environments/vagrant/
+    - command: touch file.txt
 
-- name: deploy
-  hosts: webservers
-  roles:
-    - archive  
