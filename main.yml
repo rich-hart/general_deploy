@@ -1,5 +1,13 @@
 ---
 
-- hosts: vagrant
+- hosts: node1
   tasks:
-    - command: ls
+    - apt: update_cache=yes
+
+- hosts: node1
+  tasks:
+    - apt: name=git
+
+- hosts: node1
+  roles:
+    - archive

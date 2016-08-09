@@ -1,3 +1,3 @@
 ---
 - git: repo=https://github.com/Connexions/cnx-archive.git
-       dest=/home/vagrant
+       dest=/home/vagrant/src/cnx/cnx-archive
