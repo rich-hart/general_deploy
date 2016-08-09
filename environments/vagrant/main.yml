@@ -1,5 +1,5 @@
 ---
 - hosts: nodes
   tasks:
-    - command: touch file.txt
+    - command: echo "vm running"
 
