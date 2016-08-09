@@ -1,3 +1,5 @@
+``vagrant box update``
+
 cant use virtualenv
 ```.sh
 pip install pip==8.1.2

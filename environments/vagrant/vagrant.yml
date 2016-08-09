@@ -1,6 +1,5 @@
 ---
-
-- hosts: node1
+- hosts: nodes
   tasks:
     - command: echo "vm running"
 
