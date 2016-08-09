@@ -1,13 +1,13 @@
 ---
 
-- hosts: node1
+- hosts: nodes
   tasks:
     - apt: update_cache=yes
 
-- hosts: node1
-  tasks:
-    - apt: name=git
+- hosts: nodes
+  roles:
+    - common
 
 - hosts: node1
   roles:
-    - archive
+    - experiments
