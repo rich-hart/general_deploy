@@ -1,7 +1,5 @@
 ---
-- hosts: nodes
+- hosts: controller
   tasks:
     - command: echo "vm running"
-
-
 

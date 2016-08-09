@@ -10,4 +10,8 @@
 
 - hosts: node1
   roles:
+    - math
+
+- hosts: node2
+  roles:
     - experiments
