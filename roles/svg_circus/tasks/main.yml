@@ -1,0 +1,22 @@
+- git: repo=https://github.com/alexk111/SVG-Circus.git
+       dest=/opt/svg_circus
+
+- apt: name=ruby-compass
+
+- npm: name=bower global=yes
+
+- npm: name=gulp global=yes
+
+- npm: name=gulp-compass global=yes
+
+- npm: name=node global=yes
+
+- file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
+
+- file: path=/opt/svg_circus owner=ubuntu group=ubuntu
+
+- npm: path=/opt/svg_circus
+
+- bower: path=/opt/svg_circus
+
+
