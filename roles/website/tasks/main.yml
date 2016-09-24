@@ -1,0 +1,50 @@
+---
+
+- apt_repository: repo='ppa:fkrull/deadsnakes' 
+
+- apt: update_cache=yes 
+
+- name: install system packages
+  apt: name={{item}} state=present
+  with_items:
+  - python-pip
+  - python-dev
+  - python3-pip
+  - python2.7
+  - python-psycopg2
+
+- pip: name=pip extra_args='-U'
+- pip: name=virtualenv
+- file: path=/opt owner=kardashev
+
+- pip: name=git+https://github.com/rich-hart/Gear-Generator.git#egg=Gear_Generator executable=pip2
+
+- git: repo=git@github.com:rich-hart/type3.git dest=/opt/type3 update=no accept_hostkey=true
+  become_user: kardashev #for dev
+
+- name: install django server
+  pip: requirements=/opt/type3/requirements.txt virtualenv_python=python3.5 virtualenv=/opt/type3/venv
+
+- name: create database user
+  postgresql_user: name=kardashev password=kardashev role_attr_flags=SUPERUSER
+  become_user: postgres
+
+- name: create database
+  postgresql_db: name=type3 login_user=postgres owner=kardashev
+  become_user: postgres
+
+- name: create database
+  postgresql_db: name=celery login_user=postgres owner=kardashev
+  become_user: postgres
+
+#  command: createdb -U postgres -O kardashev type3
+
+#  become_user: postgres
+
+
+- django_manage: command=migrate app_path=/opt/type3 virtualenv=/opt/type3/venv
+  become_user: kardashev
+
+- django_manage: command=test app_path=/opt/type3 virtualenv=/opt/type3/venv
+  become_user: kardashev
+

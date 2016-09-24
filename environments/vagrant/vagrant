@@ -1,4 +1,4 @@
-controller ansible_ssh_user=ubuntu ansible_connection=local
+controller ansible_ssh_user=ubuntu ansible_ssh_host=172.17.177.11 ansible_ssh_private_key_file=/vagrant/.vagrant/machines/controller/virtualbox/private_key
 node1      ansible_ssh_user=ubuntu ansible_ssh_host=172.17.177.21 ansible_ssh_private_key_file=/vagrant/.vagrant/machines/node1/virtualbox/private_key
 node2      ansible_ssh_user=ubuntu ansible_ssh_host=172.17.177.22 ansible_ssh_private_key_file=/vagrant/.vagrant/machines/node2/virtualbox/private_key
 

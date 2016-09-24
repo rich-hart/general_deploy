@@ -1,17 +1,27 @@
 ---
 
-- hosts: nodes
+#- hosts: nodes
+#  tasks:
+#    - apt: update_cache=yes
+
+#- hosts: nodes
+#  roles:
+#    - common
+
+#- hosts: node1
+#  roles:
+#    - math
+- hosts: controller
   tasks:
     - apt: update_cache=yes
-
-- hosts: nodes
+- hosts: controller
+  become: yes
   roles:
     - common
-
-- hosts: node1
-  roles:
-    - math
-
-- hosts: node2
-  roles:
-    - experiments
+    - website
+#  environment:
+#    PATH: $HOME/.cabal/bin:/opt/ghc/7.10.3/bin:/opt/cabal/1.22/bin:/opt/alex/3.1.4/bin:/opt/happy/1.19.5/bin:$PATH
+ 
+#- hosts: node2
+#  roles:
+#    - experiments

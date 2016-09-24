@@ -1,5 +1,13 @@
 ---
+- user: name=kardashev group=admin generate_ssh_key=yes
+
 - apt: name={{ item }}
   with_items:
     - git
-     
+    - python-pip
+    - python3-pip
+    - postgresql 
+    - libpq-dev 
+    - postgresql-client 
+    - postgresql-client-common
+

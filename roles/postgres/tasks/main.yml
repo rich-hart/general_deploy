@@ -1,0 +1,25 @@
+---
+- name: install postgres packages
+  apt: name={{ item }} state=present
+  with_items:
+    - "postgresql-contrib-{{ postgresql_version|default('9.3') }}"
+    - "postgresql-plpython-{{ postgresql_version|default('9.3') }}"
+    - "postgresql-server-dev-{{ postgresql_version|default('9.3') }}"
+    - python-psycopg2
+
+- name: configure postgres
+  template:
+    src=postgresql.conf.j2
+    dest=/etc/postgresql/{{ postgresql_version }}/main/postgresql.conf
+    backup=yes
+
+- name: configure postgres host-based authentication (hba)
+  template:
+    src=pg_hba.conf.j2
+    dest=/etc/postgresql/{{ postgresql_version }}/main/pg_hba.conf
+    backup=yes
+
+- name: restart postgres
+  sudo: yes
+  command: /etc/init.d/postgresql restart
+
