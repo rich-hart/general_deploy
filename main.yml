@@ -1,11 +1,11 @@
 ---
 
-- hosts: svg_circus
+- hosts: svgcircus
   tasks:
     - apt: update_cache=yes
 
-- hosts: svg_circus
+- hosts: svgcircus
   become: true
   roles:
     - common
-    - svg_circus
+    - svgcircus

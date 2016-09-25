@@ -1,5 +1,5 @@
 - git: repo=https://github.com/alexk111/SVG-Circus.git
-       dest=/opt/svg_circus
+       dest=/opt/svgcircus
 
 - apt: name=ruby-compass
 
@@ -13,10 +13,10 @@
 
 - file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
 
-- file: path=/opt/svg_circus owner=ubuntu group=ubuntu
+- file: path=/opt/svgcircus owner=ubuntu group=ubuntu
 
-- npm: path=/opt/svg_circus
+- npm: path=/opt/svgcircus
 
-- bower: path=/opt/svg_circus
+- bower: path=/opt/svgcircus
 
 

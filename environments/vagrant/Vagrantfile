@@ -2,10 +2,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.box = "ubuntu/xenial64"
 #  config.vm.box = "ubuntu/trusty64"
-  config.vm.define 'svg_circus' do |machine|
+  config.vm.define 'svgcircus' do |machine|
     machine.vm.synced_folder ".", "/vagrant"
     machine.vm.provider "virtualbox" do |vb|
-      vb.name = "svg_circus"
+      vb.name = "svgcircus"
       vb.memory = 1024 * 2
       vb.cpus = 1
     end
