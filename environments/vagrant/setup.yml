@@ -2,3 +2,4 @@
 - name: create vm
   command: vagrant up chdir={{playbook_dir}}/environments/vagrant/
 
+

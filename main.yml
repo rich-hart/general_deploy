@@ -9,3 +9,11 @@
   roles:
     - common
     - svgcircus
+
+- hosts: svgcircus_api
+  tasks:
+    - apt: update_cache=yes
+  roles:
+    - common
+    - svgcircus_api
+

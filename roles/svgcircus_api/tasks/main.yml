@@ -1,0 +1,42 @@
+---
+- apt: name=nginx state=present update_cache=yes
+
+- copy: src=./nginx.cfg dest=/etc/nginx/sites-available/svgcircus_api
+
+- file: src=/etc/nginx/sites-available/svgcircus_api dest=/etc/nginx/sites-enabled/svgcircus_api state=link
+
+- service: name=nginx state=reloaded
+
+- git: repo=https://github.com/rich-hart/svgcircus-api.git 
+       dest=/opt/svgcircus_api
+       version=base-api
+       update=yes
+
+- pip: name=virtualenv
+
+- pip: requirements=/opt/svgcircus_api/requirements/dev.txt
+       virtualenv=/opt/svgcircus_api/venv
+       virtualenv_python=python3.5
+
+- django_manage: command=migrate
+                 virtualenv=/opt/svgcircus_api/venv
+                 app_path=/opt/svgcircus_api
+
+- django_manage: command=collectstatic
+                 virtualenv=/opt/svgcircus_api/venv
+                 app_path=/opt/svgcircus_api
+
+- file: path=/opt/svgcircus_api owner=kardashev group=ubuntu
+
+- copy: src=./supervisord.conf dest=/etc/supervisord.conf
+
+- apt: name=supervisor update_cache=yes #reboot???
+
+#- supervisorctl: config=/etc/supervisord.conf
+#                 name=gunicorn
+#                 state=started
+#                 supervisorctl_path=/usr/bin/supervisorctl
+#sudo systemctl start supervisor
+- service: name=supervisor state=restarted
+
+#- command: systemctl start supervisor

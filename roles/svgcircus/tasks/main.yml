@@ -1,5 +1,16 @@
+---
+- apt: name=nginx state=present update_cache=yes
+
+- copy: src=./nginx.cfg dest=/etc/nginx/sites-available/svgcircus
+
+- file: src=/etc/nginx/sites-available/svgcircus dest=/etc/nginx/sites-enabled/svgcircus state=link
+
+- service: name=nginx state=reloaded
+
 - git: repo=https://github.com/alexk111/SVG-Circus.git
        dest=/opt/svgcircus
+       version=save
+       update=no
 
 - apt: name=ruby-compass
 
@@ -13,10 +24,12 @@
 
 - file: src=/usr/bin/nodejs dest=/usr/bin/node state=link
 
-- file: path=/opt/svgcircus owner=ubuntu group=ubuntu
+- file: path=/opt/svgcircus 
+        owner=ubuntu 
+        group=ubuntu
+        recurse=yes
 
 - npm: path=/opt/svgcircus
 
 - bower: path=/opt/svgcircus
-
 
