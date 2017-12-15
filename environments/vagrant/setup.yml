@@ -1,7 +1,5 @@
 ---
 - name: create vm
-  command: vagrant up svgcircus chdir={{playbook_dir}}/environments/vagrant/
+  command: vagrant up workspace chdir={{playbook_dir}}/environments/vagrant/
 
-- name: create vm
-  command: vagrant up svgcircus_api chdir={{playbook_dir}}/environments/vagrant/
 

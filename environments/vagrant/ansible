@@ -1,3 +1,1 @@
-svgcircus ansible_ssh_user=ubuntu ansible_ssh_host=svgcircus-dev.com ansible_ssh_private_key_file=environments/vagrant/.vagrant/machines/svgcircus/virtualbox/private_key
-svgcircus_api ansible_ssh_user=ubuntu ansible_ssh_host=api.svgcircus-dev.com ansible_ssh_private_key_file=environments/vagrant/.vagrant/machines/svgcircus_api/virtualbox/private_key
-
+workspace ansible_ssh_user=ubuntu ansible_ssh_host=workspace.com ansible_ssh_private_key_file=environments/vagrant/.vagrant/machines/workspace/virtualbox/private_key

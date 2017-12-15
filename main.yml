@@ -3,24 +3,15 @@
 - hosts: localhost
   become: false
   tasks: 
-    - command: vagrant up svgcircus chdir={{playbook_dir}}/environments/vagrant/
-    - command: vagrant up svgcircus_api chdir={{playbook_dir}}/environments/vagrant/
+    - command: vagrant up workspace chdir={{playbook_dir}}/environments/vagrant/
 
 
-- hosts: svgcircus
+- hosts: workspace
   tasks:
     - apt: update_cache=yes
 
-- hosts: svgcircus
+- hosts: workspace
   become: true
   roles:
     - common
-    - svgcircus
-
-- hosts: svgcircus_api
-  tasks:
-    - apt: update_cache=yes
-  roles:
-    - common
-    - svgcircus_api
 

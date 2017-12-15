@@ -12,3 +12,8 @@ vagrant up
 ```
 ansible-playbook -u vagrant -i environments/vagrant/ansible --become main.yml
 ```
+
+```
+/etc/hosts
+172.17.177.11 workspace.com
+```

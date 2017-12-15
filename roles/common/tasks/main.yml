@@ -14,6 +14,6 @@
     - ruby
 
 
-- git_config: name=user.name value="rich-hart" scope=global
-- git_config: name=user.email value=rich.hart@rice.edu scope=global
-- git_config: name=core.editor value=vim scope=global
+#- git_config: name=user.name value="rich-hart" scope=global
+#- git_config: name=user.email value=rich.hart@rice.edu scope=global
+#- git_config: name=core.editor value=vim scope=global

@@ -1,5 +1,5 @@
 ---
-- hosts: svgcircus
+- hosts: workspace
   tasks:
     - command: echo "vm running"
 
