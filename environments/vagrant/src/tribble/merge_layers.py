@@ -15,6 +15,16 @@ FORGROUND_TRIBBLES = join(RESOURCE_DIR,'forground_tribbles.png')
 FORGROUND_BORDER_AND_LOGO = join(RESOURCE_DIR,'forground_border_and_logo.png')
 OUTPUT = join(RESOURCE_DIR, 'merged_images.png')
 
+def merge_imgs(img1,img2):
+    rows,cols,channels = img2.shape
+    
+    for i in range(0,rows):
+        for j in range(0,cols):
+            if img2[i,j,3]==255:
+               img1[i,j,0] = img2[i,j,0]            
+               img1[i,j,1] = img2[i,j,1]            
+               img1[i,j,2] = img2[i,j,2]            
+   
 def main(argv=None):
     import ipdb; ipdb.set_trace()
     parser = argparse.ArgumentParser(
@@ -26,39 +36,13 @@ def main(argv=None):
     settings = vars(args)
     layers = settings['layers']
     total_layers = len(layers)
-    img1 = cv2.imread(BACKGROUND_WALL,-1)
-#    rows,cols,channels = img1.shape
-#    channel = numpy.ones([rows,cols])
-#    img1=numpy.append(arr=img1,values=channel,axis=2)
-#    img1[:,:,4]=channel
-#    for layer in layers:
+    final_image = cv2.imread(layers.pop(0),-1)
 
-    img2 = cv2.imread(BACKGROUND_TRIBBLES,-1)
-
-#        img = cv2.imread(layer)
-#        dst = cv2.addWeighted(final_img,0.5,img,0.5,1.0/float(total_layers)) 
-#        final_img = dst
-#    cv2.imwrite(settings['output'].name,final_img)
-
-    # Load two images
-#    img1 = cv2.imread('messi5.jpg')
-#    img2 = cv2.imread('opencv-logo.png')
-    # I want to put logo on top-left corner, So I create a ROI
-    rows,cols,channels = img2.shape
-#    roi = img1[0:rows, 0:cols ]
-    # Now create a mask of logo and create its inverse mask also
-#    img2gray = cv2.cvtColor(img2,cv2.COLOR_BGR2GRAY)
-#    ret, mask = cv2.threshold(img2gray, 0, 255, cv2.THRESH_BINARY)
-#    mask_inv = cv2.bitwise_not(mask)
-    # Now black-out the area of logo in ROI
-#    img1_bg = cv2.bitwise_and(roi,roi,mask = mask_inv)
-    # Take only region of logo from logo image.
-#    img2_fg = cv2.bitwise_and(img2,img2,mask = mask)
-    # Put logo in ROI and modify the main image
-    dst = cv2.add(img1,img2)
-    img1[0:rows, 0:cols ] = dst
-#    cv2.imshow('res',img1)
-    cv2.imwrite(settings['output'].name,img1) 
+    for layer in layers:
+        img = cv2.imread(layer,-1)
+        merge_imgs(final_image,img)
+ 
+    cv2.imwrite(settings['output'].name,final_image) 
     return settings
 
 
