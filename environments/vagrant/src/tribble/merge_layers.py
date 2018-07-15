@@ -6,15 +6,7 @@ import json
 import numpy
 import cv2
 import cv
-DATA_DIR = join(dirname(realpath(__file__)),'data')
-RESOURCE_DIR = join(DATA_DIR,'resources')
-FAN_PICTURE = os.path.join(RESOURCE_DIR, 'FAN-PIC.png')
-BACKGROUND_WALL = join(RESOURCE_DIR,'background_wall.png')
-BACKGROUND_TRIBBLES = join(RESOURCE_DIR,'background_tribbles.png')
-FORGROUND_TRIBBLES = join(RESOURCE_DIR,'forground_tribbles.png')
-FORGROUND_BORDER_AND_LOGO = join(RESOURCE_DIR,'forground_border_and_logo.png')
-OUTPUT = join(RESOURCE_DIR, 'merged_images.png')
-
+#FIXME: alpha conditional stmt
 def merge_imgs(img1,img2):
     rows,cols,channels = img2.shape
     
@@ -65,4 +57,4 @@ class TestTribbify(unittest.TestCase):
         main([TEST_BACKGROUND_WALL,TEST_BACKGROUND_TRIBBLES,TEST_FAN_PICTURE,TEST_FORGROUND_TRIBBLES,TEST_FORGROUND_BORDER_AND_LOGO,'--output='+TEST_OUTPUT])
 
 if __name__ == "__main__":
-    unittest.main()
+    main()
